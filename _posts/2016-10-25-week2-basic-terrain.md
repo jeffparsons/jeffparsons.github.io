@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Basic terrain with simplex noise
+title:      PlanetKit week 2: basic terrain
 date:       2016-10-19
 summary:    A first attempt at making terrain for PlanetKit using the `noise` crate.
 tags:       rust planetkit
