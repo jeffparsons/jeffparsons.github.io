@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      PlanetKit week 2: basic terrain
-date:       2016-10-19
+date:       2016-10-25
 summary:    A first attempt at making terrain for PlanetKit using the `noise` crate.
 tags:       rust planetkit
 published:  true
