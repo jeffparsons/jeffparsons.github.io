@@ -4,7 +4,7 @@ title:      Basic terrain with simplex noise
 date:       2016-10-19
 summary:    A first attempt at making terrain for PlanetKit using the `noise` crate.
 tags:       rust planetkit
-published:  false
+published:  true
 ---
 
 Last week I [introduced PlanetKit]({% post_url 2016-10-19-introducing-planetkit %})---a project aimed at creating a toolkit for making interactive virtual worlds. Here's where we got to last week:
