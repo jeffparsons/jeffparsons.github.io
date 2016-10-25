@@ -81,7 +81,7 @@ My first knee-jerk reaction was roughly "ugh, there's some video card or OpenGL 
 
 So that wasn't particularly useful. My second thought was "ok, that's an awfully neat shape. Maybe there's a magic number in here that might clue me in to the order of magnitude we're talking about." So I tried tweaking the resolution of my globe to something less convenient than it was before (root quad side length of 64, chunk side length of 16). Let's try a root side length of 80, and a chunk side length of 20.
 
-![A globe](/images/terrain/high-res-terrain-counting.png)
+![The smoking gun](/images/terrain/high-res-terrain-missing-geometry-counting.png)
 
 Ooookay. This is more interesting. Note the partial chunk at the tip of the arrow. This calls for a quick count. I can see...
 
@@ -99,7 +99,7 @@ let first_vertex_index = vertex_data.len() as u16;
 
 So I was explicitly truncating the index before I did anything with it. D'oh! Ok, so let's try bumping up the size of the type I'm using for indexing vertices...
 
-![A globe](/images/terrain/high-res-terrain-working.png)
+![High-res terrain working](/images/terrain/high-res-terrain-working.png)
 
 Hurrah! All is good in the world again.
 
@@ -108,7 +108,7 @@ Hurrah! All is good in the world again.
 
 We sure can. If I make all the land green, and also render an extra blue globe without any noise applied to its surface, then we can make something that looks vaguely terrestrial:
 
-![A globe](/images/terrain/high-res-terrain-earth.png)
+![Something more terrestrial](/images/terrain/high-res-terrain-earth.png)
 
 I haven't pushed the code for this bit anywhere, because it's just silly copy-and-paste hacks just to get a preview of where we're headed.
 
