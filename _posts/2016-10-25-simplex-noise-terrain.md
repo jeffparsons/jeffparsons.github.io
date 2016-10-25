@@ -89,9 +89,9 @@ Ooookay. This is more interesting. Note the partial chunk at the tip of the arro
 - 8 full chunks
 - 20 * 19 + 4 = 384 quads
 
-Based on the chunk and total root side lengths of 20 and 80 respectively, that adds up to 16384, or 2^14. Aha! That's an awfully convenient number. So maybe index buffers can only be so big and they just get truncated, or---
+Based on the chunk and total root side lengths of 20 and 80 respectively, that adds up to 16384, or 2<sup>14</sup>. Aha! That's an awfully convenient number. So maybe index buffers can only be so big and they just get truncated, or---
 
-This is when I started to cringe. 2^14 leaves a factor of 4 before busting an unsigned 16-bit integer. And each quad has 4 vertices. Which just happens to be the size used for vertex indices in the tutorial code I started with, and which I never revisited. But then why, I wondered, wasn't I getting an overflow explosion at some point? The culprit turned out to be as simple as this:
+This is when I started to cringe. 2<sup>14</sup> leaves a factor of 4 before busting an unsigned 16-bit integer. And each quad has 4 vertices. Which just happens to be the size used for vertex indices in the tutorial code I started with, and which I never revisited. But then why, I wondered, wasn't I getting an overflow explosion at some point? The culprit turned out to be as simple as this:
 
 {% highlight rust %}
 let first_vertex_index = vertex_data.len() as u16;
