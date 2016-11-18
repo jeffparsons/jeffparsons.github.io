@@ -4,7 +4,7 @@ title:      "PlanetKit week 4: filing off some rough edges"
 date:       2016-11-18
 summary:    Fixing the display of voxels that straddle chunk boundaries, and chipping away at the most obvious overdraw.
 tags:       rust planetkit
-published:  false
+published:  true
 ---
 
 PlanetKit is a project aimed at creating a toolkit for making interactive virtual worlds. I'm writing it in the Rust programming language, which I'm finding delightful to work with, and a great fit for the task.
