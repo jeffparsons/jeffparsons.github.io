@@ -72,7 +72,7 @@ This eliminated the vast majority of wasted geometry in my globe. I haven't both
 
 ## Overlapping voxels on chunk boundaries
 
-Next up I needed to deal with overlapping voxels at chunk boundaries. 
+Next up I needed to deal with overlapping voxels at chunk boundaries. Taking another quick look at the problem in the picture above:
 
 ![Hexagonal prisms](/images/hexagons/globe-with-hexagonal-prisms.png)
 
@@ -130,7 +130,7 @@ Dropping in a table of references to these vertices, and a tiny bit of logic aro
 
 Hurrah! No more weird overlaps!
 
-But there's still a line down the middle---what's the deal with that? That's because there are actually two _completely independent_ voxels at each point on the boundary, one of which belongs to each chunk. I currently don't have any way of deciding which chunk holds the source of truth for a given voxel.
+But there's still a line down the middle---what's the deal with that? That's because there are actually two _completely independent_ voxels at each point on the boundary, one of which belongs to each chunk. I didn't yet have any way of deciding which chunk holds the source of truth for a given voxel.
 
 
 ## Brief detour: picking the wrong optimisation
@@ -202,9 +202,11 @@ Also note the special cases for north and south poles; they don't fit neatly int
 
 Breaking those roots down into chunks works basically the same: each chunk owns two of its edges, and accepts the values from its neighbours as authoritative for the other two. At the moment I'm implementing this by simply looping over _all voxels in all chunks_ after all chunks have been created, and finding and copying the source of truth for any voxel not owned by the chunk I'm currently examining. It's brain-dead (I'm not even restricting the search to border voxels) but it doesn't increase the complexity class of the whole thing, and it's far from being a bottleneck at the moment. That'll be an optimisation to care about once I'm dynamically updating the world.
 
-And here's what it looks like:
+And here's what it looks like now:
 
 ![No more cracks!](/images/fix-cracks/no-more-cracks.png)
+
+Aw, yiss!
 
 
 ## What's next?
